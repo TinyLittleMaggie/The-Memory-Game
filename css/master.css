@@ -1,0 +1,52 @@
+body {
+  text-align: center;
+  background-color: #FAC22A;
+  height: 100vh;
+  margin: 0;
+}
+
+h1 {
+  font-family: 'Quicksand', sans-serif;
+  font-size: 2.5rem;
+  margin: 3rem auto 1rem;
+  color: #363636;
+}
+
+.deck {
+  background-color: #FAC22A;
+  width: 500px;
+  height: 500px;
+  border-radius: 0.8rem;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: center;
+  justify-content: center;
+}
+
+.card {
+  background-color: #363636;
+  width: 100px;
+  height: 100px;
+  border-radius: 0.6rem;
+  margin: 0.5rem;
+  cursor: pointer;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: center;
+  justify-content: center;
+}
+
+i {
+  color: white;
+  font-size: 2rem;
+}
+
+.show {
+  background-color: #0E638E;
+}
+
+.wrong {
+  background-color: #D42A20;
+}
