@@ -43,6 +43,10 @@ i {
   font-size: 2rem;
 }
 
+.hide > i {
+  display: none;
+}
+
 .show {
   background-color: #0E638E;
 }
