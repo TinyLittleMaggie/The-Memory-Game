@@ -40,4 +40,10 @@ for (let i = 0; i < 16; i++) {
   cards[i].firstElementChild.innerHTML=symbols[i];
 }
 
-//
+// Add an Event Listener to each card so that when they're clicked, they flip over.
+
+for (let i = 0; i < 16; i++) {
+  cards[i].addEventListener('click', function() {
+  	cards[i].classList.add('show');
+  });
+}
