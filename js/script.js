@@ -44,6 +44,6 @@ for (let i = 0; i < 16; i++) {
 
 for (let i = 0; i < 16; i++) {
   cards[i].addEventListener('click', function() {
-  	cards[i].classList.add('show');
+  	cards[i].classList.toggle('show');
   });
 }
