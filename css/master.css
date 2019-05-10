@@ -57,7 +57,7 @@ h1 {
   position: absolute;
   backface-visibility: hidden;
   transform: rotateY(180deg);
-  
+
   /* The front side of the card is flipped by 180deg by default, and set to hidden.
      When the card is flipped over, the front side is flipped by 360deg in total,
      therefore returned to its original state, and is not hidden anymore. */
