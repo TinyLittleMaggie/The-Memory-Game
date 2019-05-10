@@ -39,3 +39,5 @@ const cards = document.querySelectorAll('.card');
 for (let i = 0; i < 16; i++) {
   cards[i].firstElementChild.innerHTML=symbols[i];
 }
+
+//
