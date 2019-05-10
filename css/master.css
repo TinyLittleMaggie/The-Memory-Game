@@ -26,7 +26,6 @@ h1 {
 }
 
 .card {
-  background-color: #363636;
   width: 100px;
   height: 100px;
   border-radius: 0.6rem;
@@ -36,19 +35,34 @@ h1 {
   flex-wrap: wrap;
   align-content: center;
   justify-content: center;
+  position: relative;
+}
+
+.card:hover {
+  transform: scale(1.02);
+  transition: transform .2s;
+}
+
+.front {
+  width: 100%;
+  height: 100%;
+  border-radius: 0.6rem;
+  background-color: #0E638E;
+  position: absolute;
+}
+
+.back {
+  width: 100%;
+  height: 100%;
+  border-radius: 0.6rem;
+  background-color: #363636;
+  position: absolute;
 }
 
 i {
   color: white;
   font-size: 2rem;
-}
-
-.hide > i {
-  display: none;
-}
-
-.show {
-  background-color: #0E638E;
+  margin-top: 2rem;
 }
 
 .wrong {
