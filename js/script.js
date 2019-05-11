@@ -1,7 +1,7 @@
-
 // Define the suffle function
 function shuffle(array) {
-  var currentIndex = array.length, temporaryValue, randomIndex;
+  var currentIndex = array.length,
+    temporaryValue, randomIndex;
 
   // While there remain elements to shuffle...
   while (0 !== currentIndex) {
@@ -37,13 +37,21 @@ shuffle(symbols);
 // Select the cards and place the shuffled symbols inside
 const cards = document.querySelectorAll('.card');
 for (let i = 0; i < 16; i++) {
-  cards[i].firstElementChild.innerHTML=symbols[i];
+  cards[i].firstElementChild.innerHTML = symbols[i];
 }
 
 // Add an Event Listener to each card so that when they're clicked, they flip over.
+// Sixteen event listeners and sixteen functions are added. To be refactored later!
 
 for (let i = 0; i < 16; i++) {
   cards[i].addEventListener('click', function() {
   	cards[i].classList.toggle('show');
   });
 }
+
+// Add an Event Listener to each card so that when they're clicked, they flip over.
+// This code uses event delegation, but Element.closest() isn't supported by Internet Explorer browser.
+// const deck = document.querySelector('.deck');
+// deck.addEventListener('click', function(event) {
+//   event.target.closest('.card').classList.toggle('show');
+// });
