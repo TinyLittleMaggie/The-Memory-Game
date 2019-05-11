@@ -41,6 +41,7 @@ for (let i = 0; i < 16; i++) {
 }
 
 // Add an Event Listener to each card so that when they're clicked, they flip over.
+// Need to come back to this later: event delegation & consider refactoring "toggling cards" into its own function
 
 for (let i = 0; i < 16; i++) {
   cards[i].addEventListener('click', function() {
