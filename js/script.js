@@ -51,21 +51,25 @@ let clickedCards = [];
 // Need to come back to this later: event delegation & consider refactoring "toggling cards" into its own function
 for (let i = 0; i < 16; i++) {
   cards[i].addEventListener('click', function() {
-    moves++;
-    clickedCards.push(cards[i].querySelector('i').classList);
-    cards[i].classList.add('show');
+    
+    if (!cards[i].classList.contains('show')) {
+      moves++;
+      clickedCards.push(cards[i].querySelector('i').classList);
+      cards[i].classList.add('show');
 
-    console.log("You've made " + moves + " moves.");
-    console.log("Card" + i + " has been clicked!");
+      console.log("You've made " + moves + " moves.");
+      console.log("Card" + i + " has been clicked!");
+    }
 
-if (moves%2 === 0 && moves > 0) {
-  // comparison only happens on even moves and when moves > 0
-  if (clickedCards[moves-1].value === clickedCards[moves-2].value) {
-    console.log("It's a match!");
-  } else {
-    console.log("It's not a match!");
-  }
-}
+
+    if (moves % 2 === 0 && moves > 0) {
+      // comparison only happens on even moves and when moves > 0
+      if (clickedCards[moves - 1].value === clickedCards[moves - 2].value) {
+        console.log("It's a match!");
+      } else {
+        console.log("It's not a match!");
+      }
+    }
 
   });
 }
