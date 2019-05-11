@@ -44,6 +44,9 @@ for (let i = 0; i < 16; i++) {
 // Use a variable to count the number of moves.
 let moves = 0;
 
+// Use another variable to count the matched pairs.
+let matchedPairs = 0;
+
 // Use an array to store the cards that are clicked.
 let clickedCards = [];
 
@@ -66,13 +69,19 @@ for (let i = 0; i < 16; i++) {
       let currentSymbol = clickedCards[moves - 1].querySelector('i').classList.value;
       let previousSymbol = clickedCards[moves - 2].querySelector('i').classList.value;
       if (currentSymbol === previousSymbol) {
+        matchedPairs++;
         console.log("It's a match!");
+        console.log("Matched pairs = " + matchedPairs + ".");
       } else {
         setTimeout(function() {
           clickedCards[moves - 1].classList.remove('show');
           clickedCards[moves - 2].classList.remove('show');
         }, 1000);
       }
+    }
+
+    if (matchedPairs === 8) {
+      console.log("Yay! You won the game!");
     }
 
   });
