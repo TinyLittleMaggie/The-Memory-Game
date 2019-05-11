@@ -1,7 +1,7 @@
-
 // Define the suffle function
 function shuffle(array) {
-  var currentIndex = array.length, temporaryValue, randomIndex;
+  var currentIndex = array.length,
+    temporaryValue, randomIndex;
 
   // While there remain elements to shuffle...
   while (0 !== currentIndex) {
@@ -37,14 +37,35 @@ shuffle(symbols);
 // Select the cards and place the shuffled symbols inside
 const cards = document.querySelectorAll('.card');
 for (let i = 0; i < 16; i++) {
-  cards[i].firstElementChild.innerHTML=symbols[i];
+  cards[i].firstElementChild.innerHTML = symbols[i];
 }
+
+
+// Use a variable to count the number of moves.
+let moves = 0;
+
+// Use an array to store the cards that are clicked.
+let clickedCards = [];
 
 // Add an Event Listener to each card so that when they're clicked, they flip over.
 // Need to come back to this later: event delegation & consider refactoring "toggling cards" into its own function
-
 for (let i = 0; i < 16; i++) {
   cards[i].addEventListener('click', function() {
-  	cards[i].classList.toggle('show');
+    moves++;
+    clickedCards.push(cards[i].querySelector('i').classList);
+    cards[i].classList.add('show');
+
+    console.log("You've made " + moves + " moves.");
+    console.log("Card" + i + " has been clicked!");
+
+if (moves%2 === 0 && moves > 0) {
+  // comparison only happens on even moves and when moves > 0
+  if (clickedCards[moves-1].value === clickedCards[moves-2].value) {
+    console.log("It's a match!");
+  } else {
+    console.log("It's not a match!");
+  }
+}
+
   });
 }

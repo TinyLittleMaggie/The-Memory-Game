@@ -74,3 +74,7 @@ i {
 .wrong {
   background-color: #D42A20;
 }
+
+.match {
+  background-color: yellow;
+}
