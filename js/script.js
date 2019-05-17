@@ -63,7 +63,7 @@ for (let i = 0; i < 16; i++) {
         cards[i].classList.add('show');
       }
 
-      if (moves % 2 === 0 && moves > 0) { // comparison only happens on even moves and when moves > 0
+      if (clickedCards.length === 2) { // comparison only happens when the clickedCards array has 2 elements
         let currentSymbol = clickedCards[0].querySelector('i').classList.value;
         let previousSymbol = clickedCards[1].querySelector('i').classList.value;
         console.log(currentSymbol + "  " + previousSymbol);
