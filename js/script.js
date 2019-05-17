@@ -57,7 +57,7 @@ for (let i = 0; i < 16; i++) {
 
     if (clickedCards.length < 2) { // This prevents the player from clicking a third card while the comparison is still in progress
 
-      if (!cards[i].classList.contains('show')) {
+      if (!cards[i].classList.contains('show')) { // This prevents the player from clicking on a showing card
         moves++;
         clickedCards.push(cards[i]);
         cards[i].classList.add('show');
