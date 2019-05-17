@@ -1,4 +1,4 @@
-// Define the suffle function
+// Define the shuffle function
 function shuffle(array) {
   var currentIndex = array.length,
     temporaryValue, randomIndex;
