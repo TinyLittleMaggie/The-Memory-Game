@@ -61,8 +61,6 @@ for (let i = 0; i < 16; i++) {
         moves++;
         clickedCards.push(cards[i]);
         cards[i].classList.add('show');
-        // Display number of moves to the page:
-        document.querySelector('.moveCounter').innerHTML = moves + " moves";
       }
 
       if (moves % 2 === 0 && moves > 0) { // comparison only happens on even moves and when moves > 0
@@ -85,10 +83,34 @@ for (let i = 0; i < 16; i++) {
             clickedCards = [];
           }, 1300);
         }
+
+        // Updating the star rating in real time:
+        let emm = moves + (8-matchedPairs)*2; // Estimated mimimum moves: If the player plays all remaining cards perfectly, (s)he will have made this many moves when (s)he wins.
+        if (emm >= 32 && emm <= 38) {
+          document.querySelector('.starRating').innerHTML =
+          `<i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="far fa-star"></i>`;
+        } else if (emm > 38 && emm <= 46) {
+          document.querySelector('.starRating').innerHTML =
+          `<i class="fas fa-star"></i>
+          <i class="far fa-star"></i>
+          <i class="far fa-star"></i>`;
+        } else if (emm > 46){
+          document.querySelector('.starRating').innerHTML =
+          `<i class="far fa-star"></i>
+          <i class="far fa-star"></i>
+          <i class="far fa-star"></i>`;
+        }
+        console.log(emm);
       }
 
     }
 
+    // Display number of moves to the page:
+    document.querySelector('.moveCounter').innerHTML = moves + " moves";
+
+    // Checking for the winning condition:
     if (matchedPairs === 8) {
       console.log("Yay! You won the game!");
     }
