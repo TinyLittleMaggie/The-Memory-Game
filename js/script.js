@@ -47,6 +47,10 @@ let moves = 0;
 // Use another variable to count the matched pairs.
 let matchedPairs = 0;
 
+// Use a variable to record time (in seconds) since the first click.
+let time = 0;
+let timerOn = false;
+
 // Use an array to store the cards that are clicked.
 let clickedCards = [];
 
@@ -54,6 +58,9 @@ let clickedCards = [];
 // Need to come back to this later: event delegation & consider refactoring "toggling cards" into its own function
 for (let i = 0; i < 16; i++) {
   cards[i].addEventListener('click', function() {
+
+    timerOn = true;
+    console.log("timerOn = "+ timerOn);
 
     if (clickedCards.length < 2) { // This condition prevents the player from clicking a third card while the comparison is still in progress
 
@@ -105,7 +112,6 @@ for (let i = 0; i < 16; i++) {
         }
         console.log(emm);
       }
-
     }
 
     // Display number of moves to the page:
@@ -114,7 +120,19 @@ for (let i = 0; i < 16; i++) {
     // Checking for the winning condition:
     if (matchedPairs === 8) {
       console.log("Yay! You won the game!");
+      timerOn = false;
     }
 
   });
+}
+
+// Timer (only works for an hour):
+// Oh no! This is an expensive way of implementing the timer! - Because 3600 functions will be added to the queue before they are executed one by one! 
+if (timerOn === true) {
+  for (let i = 0; i < 3600; i++) {
+    setTimeout(function(){
+      time++;
+      console.log("time = " + time);
+    }, i*1000);
+  }
 }
