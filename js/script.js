@@ -60,7 +60,7 @@ for (let i = 0; i < 16; i++) {
   cards[i].addEventListener('click', function() {
 
     timerOn = true;
-    console.log("timerOn = "+ timerOn);
+    console.log("timerOn = " + timerOn);
 
     if (clickedCards.length < 2) { // This condition prevents the player from clicking a third card while the comparison is still in progress
 
@@ -93,20 +93,20 @@ for (let i = 0; i < 16; i++) {
         }
 
         // Updating the star rating in real time:
-        let emm = moves + (8-matchedPairs)*2; // Estimated mimimum moves: If the player plays all remaining cards perfectly, (s)he will have made this many moves when (s)he wins.
+        let emm = moves + (8 - matchedPairs) * 2; // Estimated mimimum moves: If the player plays all remaining cards perfectly, (s)he will have made this many moves when (s)he wins.
         if (emm >= 32 && emm <= 38) {
           document.querySelector('.starRating').innerHTML =
-          `<i class="fas fa-star"></i>
+            `<i class="fas fa-star"></i>
           <i class="fas fa-star"></i>
           <i class="far fa-star"></i>`;
         } else if (emm > 38 && emm <= 46) {
           document.querySelector('.starRating').innerHTML =
-          `<i class="fas fa-star"></i>
+            `<i class="fas fa-star"></i>
           <i class="far fa-star"></i>
           <i class="far fa-star"></i>`;
-        } else if (emm > 46){
+        } else if (emm > 46) {
           document.querySelector('.starRating').innerHTML =
-          `<i class="far fa-star"></i>
+            `<i class="far fa-star"></i>
           <i class="far fa-star"></i>
           <i class="far fa-star"></i>`;
         }
@@ -126,13 +126,10 @@ for (let i = 0; i < 16; i++) {
   });
 }
 
-// Timer (only works for an hour):
-// Oh no! This is an expensive way of implementing the timer! - Because 3600 functions will be added to the queue before they are executed one by one! 
+// Timer:
 if (timerOn === true) {
-  for (let i = 0; i < 3600; i++) {
-    setTimeout(function(){
-      time++;
-      console.log("time = " + time);
-    }, i*1000);
-  }
+  var timer = setInterval(function() {
+    time++;
+    console.log("time = " + time);
+  }, 1000);
 }
