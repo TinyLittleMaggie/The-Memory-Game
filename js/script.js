@@ -55,29 +55,38 @@ let clickedCards = [];
 for (let i = 0; i < 16; i++) {
   cards[i].addEventListener('click', function() {
 
-    if (!cards[i].classList.contains('show')) {
-      moves++;
-      clickedCards.push(cards[i]);
-      cards[i].classList.add('show');
+    if (clickedCards.length < 2) { // This prevents the player from clicking a third card while the comparison is still in progress
 
-      console.log("You've made " + moves + " moves.");
-      console.log("Card" + i + " has been clicked!");
-    }
+      if (!cards[i].classList.contains('show')) {
+        moves++;
+        clickedCards.push(cards[i]);
+        cards[i].classList.add('show');
 
-    if (moves % 2 === 0 && moves > 0) {
-      // comparison only happens on even moves and when moves > 0
-      let currentSymbol = clickedCards[moves - 1].querySelector('i').classList.value;
-      let previousSymbol = clickedCards[moves - 2].querySelector('i').classList.value;
-      if (currentSymbol === previousSymbol) {
-        matchedPairs++;
-        console.log("It's a match!");
-        console.log("Matched pairs = " + matchedPairs + ".");
-      } else {
-        setTimeout(function() {
-          clickedCards[moves - 1].classList.remove('show');
-          clickedCards[moves - 2].classList.remove('show');
-        }, 1000);
+        console.log("You've made " + moves + " moves.");
       }
+
+      if (moves % 2 === 0 && moves > 0) { // comparison only happens on even moves and when moves > 0
+        let currentSymbol = clickedCards[0].querySelector('i').classList.value;
+        let previousSymbol = clickedCards[1].querySelector('i').classList.value;
+        console.log(currentSymbol + "  " + previousSymbol);
+        if (currentSymbol === previousSymbol) {
+          matchedPairs++;
+          console.log("It's a match!");
+          console.log("Matched pairs = " + matchedPairs + ".");
+          setTimeout(function() { // clear up the array once the comparison is done
+            clickedCards = [];
+          }, 300);
+        } else {
+          setTimeout(function() {
+            clickedCards[0].classList.remove('show');
+            clickedCards[1].classList.remove('show');
+          }, 1000);
+          setTimeout(function() { // clear up the array once the comparison is done
+            clickedCards = [];
+          }, 1300);
+        }
+      }
+
     }
 
     if (matchedPairs === 8) {
