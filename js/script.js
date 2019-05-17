@@ -61,8 +61,8 @@ for (let i = 0; i < 16; i++) {
         moves++;
         clickedCards.push(cards[i]);
         cards[i].classList.add('show');
-
-        console.log("You've made " + moves + " moves.");
+        // Display number of moves to the page:
+        document.querySelector('.moveCounter').innerHTML = moves + " moves";
       }
 
       if (moves % 2 === 0 && moves > 0) { // comparison only happens on even moves and when moves > 0

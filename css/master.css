@@ -84,26 +84,26 @@ h1 {
 
 .performance {
   width: 500px;
+  height: 2rem;
   margin: 0.5rem auto 0;
   display: flex;
-  align-content: center;
   justify-content: center;
   font-family: 'Quicksand', sans-serif;
   font-size: 1rem;
   color: #363636;
+  position: relative;
 }
 
 .moveCounter {
-  margin-left: 0;
-  margin-right: 4rem;
+  position: absolute;
+  left: 2rem;
 }
 
 .timer {
-  margin-left: 4rem;
-  margin-right: 4rem;
+  position: absolute;
 }
 
 .starRating {
-  margin-left: 4rem;
-  margin-right: 0;
+  position: absolute;
+  right: 2rem;
 }
