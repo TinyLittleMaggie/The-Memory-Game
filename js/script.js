@@ -55,9 +55,10 @@ let clickedCards = [];
 for (let i = 0; i < 16; i++) {
   cards[i].addEventListener('click', function() {
 
-    if (clickedCards.length < 2) { // This prevents the player from clicking a third card while the comparison is still in progress
+    if (clickedCards.length < 2) { // This condition prevents the player from clicking a third card while the comparison is still in progress
 
-      if (!cards[i].classList.contains('show')) { // This prevents the player from clicking on a showing card
+      // Actions to take once a valid click is performed:
+      if (!cards[i].classList.contains('show')) { // The condition prevents the player from clicking on a showing card
         moves++;
         clickedCards.push(cards[i]);
         cards[i].classList.add('show');
