@@ -126,10 +126,11 @@ for (let i = 0; i < 16; i++) {
   });
 }
 
-// Timer:
-if (timerOn === true) {
-  var timer = setInterval(function() {
-    time++;
-    console.log("time = " + time);
-  }, 1000);
-}
+// Timer: currently starts once the page is loaded
+
+let timer = setInterval(function() {
+  time++;
+  let minutes = ("0" + Math.floor(time / 60)).slice(-2);
+  let seconds = ("0" + time % 60).slice(-2);
+  document.querySelector('.timer').innerHTML = minutes + ":" + seconds;
+}, 1000);
