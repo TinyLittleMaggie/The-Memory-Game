@@ -140,3 +140,14 @@ let timer = setInterval(function() {
   let seconds = ("0" + time % 60).slice(-2);
   document.querySelector('.timer').innerHTML = minutes + ":" + seconds;
 }, 1000);
+
+
+// Reset Game
+const resetButton = document.querySelector('.resetButton');
+resetButton.addEventListener('click', function() {
+  clearInterval(timer);
+  time = 0;
+  let minutes = ("0" + Math.floor(time / 60)).slice(-2);
+  let seconds = ("0" + time % 60).slice(-2);
+  document.querySelector('.timer').innerHTML = minutes + ":" + seconds;
+});

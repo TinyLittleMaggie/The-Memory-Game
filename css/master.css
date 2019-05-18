@@ -5,11 +5,32 @@ body {
   margin: 0;
 }
 
+.title {
+  width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+}
+
 h1 {
   font-family: 'Quicksand', sans-serif;
   font-size: 2.4rem;
   margin: 2.5rem auto 0.5rem;
   color: #363636;
+  display: inline-block;
+}
+
+.title i {
+  font-size: 1.2rem;
+  color: #363636;
+  position: absolute;
+  right: 3rem;
+  top: 3.7rem;
+}
+
+.title i:hover {
+  transform: scale(1.1);
+  cursor: pointer;
 }
 
 .deck {
