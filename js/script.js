@@ -83,10 +83,16 @@ for (let i = 0; i < 16; i++) {
             clickedCards = [];
           }, 300);
         } else {
+          clickedCards[0].querySelector('.front').classList.add('wrong');
+          clickedCards[1].querySelector('.front').classList.add('wrong');
           setTimeout(function() {
             clickedCards[0].classList.remove('show');
             clickedCards[1].classList.remove('show');
           }, 1000);
+          setTimeout(function() {
+            clickedCards[0].querySelector('.front').classList.remove('wrong');
+            clickedCards[1].querySelector('.front').classList.remove('wrong');
+          }, 1200);
           setTimeout(function() { // clear up the array once the comparison is done
             clickedCards = [];
           }, 1300);
