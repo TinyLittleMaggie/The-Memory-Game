@@ -49,7 +49,13 @@ let matchedPairs = 0;
 
 // Use a variable to record time (in seconds) since the first click.
 let time = 0;
+// Variables that store minutes and seconds
+let minutes = 0;
+let seconds = 0;
+// Record current timer state (on or off)
 let timerOn = false;
+// Variable that stores the setInterval()
+let timer;
 
 // Use an array to store the cards that are clicked.
 let clickedCards = [];
@@ -59,8 +65,11 @@ let clickedCards = [];
 for (let i = 0; i < 16; i++) {
   cards[i].addEventListener('click', function() {
 
-    timerOn = true;
     console.log("timerOn = " + timerOn);
+    if (timerOn === false) {
+      startTimer();
+      timerOn = true;
+    }
 
     if (clickedCards.length < 2) { // This condition prevents the player from clicking a third card while the comparison is still in progress
 
@@ -126,6 +135,7 @@ for (let i = 0; i < 16; i++) {
     // Checking for the winning condition:
     if (matchedPairs === 8) {
       console.log("Yay! You won the game!");
+      clearInterval(timer);
       timerOn = false;
     }
 
@@ -134,12 +144,14 @@ for (let i = 0; i < 16; i++) {
 
 // Timer: currently starts once the page is loaded
 
-let timer = setInterval(function() {
-  time++;
-  let minutes = ("0" + Math.floor(time / 60)).slice(-2);
-  let seconds = ("0" + time % 60).slice(-2);
-  document.querySelector('.timer').innerHTML = minutes + ":" + seconds;
-}, 1000);
+function startTimer() {
+    timer = setInterval(function() {
+    time++;
+    minutes = ("0" + Math.floor(time / 60)).slice(-2);
+    seconds = ("0" + time % 60).slice(-2);
+    document.querySelector('.timer').innerHTML = minutes + ":" + seconds;
+  }, 1000);
+}
 
 
 // Reset Game
