@@ -101,7 +101,7 @@ function startTimer() {
 }
 
 /* -----------------------------------------------------------------------------
- Manipulating page content
+ Where the real thing starts
  ----------------------------------------------------------------------------- */
 
 // Initialise the game once the page is loaded
