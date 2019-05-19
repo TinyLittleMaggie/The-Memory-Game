@@ -131,6 +131,7 @@ h1 {
 
 .winningPopUp {
   background-color: #FFFFFF;
+  font-family: 'Quicksand', sans-serif;
   width: 540px;
   height: 600px;
   border-radius: 0.8rem;
@@ -140,4 +141,46 @@ h1 {
   bottom: 600px;
   z-index: 1;
   visibility: hidden;
+}
+
+.popUpComment {
+  font-size: 2.4rem;
+  font-weight: bold;
+  color: #0E638E;
+  position: relative;
+  top: 8rem;
+}
+
+.popUpTime {
+  font-size: 1rem;
+  color: #363636;
+  position: relative;
+  top: 9rem;
+}
+
+.popUpStars {
+  font-size: 3.5rem;
+  color: #FAC22A;
+  position: relative;
+  top: 11rem;
+}
+
+.playAgainButton {
+  background-color: #D42A20;
+  color: #FFFFFF;
+  width: 220px;
+  height: 60px;
+  border-radius: 30px;
+  margin: auto;
+  padding-top: 0.8rem;
+  position: relative;
+  top: 13rem;
+  font-size: 1.5rem;
+  font-weight: bold;
+  box-sizing: border-box;
+}
+
+.playAgainButton:hover {
+  transform: scale(1.02);
+  cursor: pointer;
 }

@@ -100,10 +100,38 @@ function startTimer() {
   }, 1000);
 }
 
+function starRate(moves) {
+  let stars;
+  if (moves < 32) {
+    stars =
+    `<i class="fas fa-star"></i>
+    <i class="fas fa-star"></i>
+    <i class="fas fa-star"></i>`;
+  }
+  else if (moves >= 32 && moves <= 38) {
+    stars =
+    `<i class="fas fa-star"></i>
+    <i class="fas fa-star"></i>
+    <i class="far fa-star"></i>`;
+  } else if (moves > 38 && moves <= 46) {
+    stars =
+    `<i class="fas fa-star"></i>
+    <i class="far fa-star"></i>
+    <i class="far fa-star"></i>`;
+  } else if (moves > 46) {
+    stars =
+    `<i class="far fa-star"></i>
+    <i class="far fa-star"></i>
+    <i class="far fa-star"></i>`;
+  }
+  return stars;
+}
+
 function winningPopUp(moves, time) {
   let popUp = document.querySelector('.winningPopUp');
   popUp.style.visibility = "visible";
-  popUp.innerHTML = "Yay! You won the game!" + " Moves = " + moves + ", time = " + time + " seconds";
+  popUp.querySelector('.popUpTime').innerHTML = "You've won the game in " + time + " seconds!";
+  popUp.querySelector('.popUpStars').innerHTML = starRate(moves);
 }
 
 /* -----------------------------------------------------------------------------
@@ -199,5 +227,14 @@ for (let i = 0; i < 16; i++) {
 const resetButton = document.querySelector('.resetButton');
 resetButton.addEventListener('click', function() {
   console.log('reset game!');
+  resetGame();
+});
+
+
+// Adding an event listener to the "play again" resetButton
+const playAgain = document.querySelector('.playAgainButton');
+playAgain.addEventListener('click', function() {
+  let popUp = document.querySelector('.winningPopUp');
+  popUp.style.visibility = "hidden";
   resetGame();
 });
