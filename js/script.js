@@ -100,6 +100,10 @@ function startTimer() {
   }, 1000);
 }
 
+function winningPopUp(moves, time) {
+  console.log("Yay! You won the game!" + " Moves = " + moves + ", time = " + time + " seconds");
+}
+
 /* -----------------------------------------------------------------------------
  Where the real thing starts
  ----------------------------------------------------------------------------- */
@@ -181,7 +185,7 @@ for (let i = 0; i < 16; i++) {
 
     // Checking for the winning condition:
     if (matchedPairs === 8) {
-      console.log("Yay! You won the game!");
+      winningPopUp(moves, time);
       clearInterval(timer);
       timerOn = false;
     }
