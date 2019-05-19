@@ -1,4 +1,40 @@
-// Define the shuffle function
+/*
+ *
+ * Initialising global variables
+ *
+ */
+
+// An array to store the innerHTML to put inside the front side of each card
+const symbols = [
+  '<i class="fa fa-star"></i>', '<i class="fa fa-star"></i>',
+  '<i class="fas fa-moon"></i>', '<i class="fas fa-moon"></i>',
+  '<i class="fas fa-cloud"></i>', '<i class="fas fa-cloud"></i>',
+  '<i class="fas fa-fish"></i>', '<i class="fas fa-fish"></i>',
+  '<i class="fa fa-heart"></i>', '<i class="fa fa-heart"></i>',
+  '<i class="fas fa-cannabis"></i>', '<i class="fas fa-cannabis"></i>',
+  '<i class="fas fa-paw"></i>', '<i class="fas fa-paw"></i>',
+  '<i class="fas fa-bone"></i>', '<i class="fas fa-bone"></i>'
+];
+
+// Select the cards and place the shuffled symbols inside
+const cards = document.querySelectorAll('.card');
+// Use a variable to count the number of moves.
+let moves = 0;
+// Use another variable to count the matched pairs.
+let matchedPairs = 0;
+// Use a variable to record time (in seconds) since the first click.
+let time = 0;
+// Variables that store minutes and seconds
+let minutes = 0;
+let seconds = 0;
+// Record current timer state (on or off)
+let timerOn = false;
+// Variable that stores the setInterval()
+let timer;
+// Use an array to store the cards that are clicked.
+let clickedCards = [];
+
+
 function shuffle(array) {
   var currentIndex = array.length,
     temporaryValue, randomIndex;
@@ -19,46 +55,46 @@ function shuffle(array) {
   return array;
 }
 
-// Initialise an array to store the innerHTML to put inside the front side of each card
-const symbols = [
-  '<i class="fa fa-star"></i>', '<i class="fa fa-star"></i>',
-  '<i class="fas fa-moon"></i>', '<i class="fas fa-moon"></i>',
-  '<i class="fas fa-cloud"></i>', '<i class="fas fa-cloud"></i>',
-  '<i class="fas fa-fish"></i>', '<i class="fas fa-fish"></i>',
-  '<i class="fa fa-heart"></i>', '<i class="fa fa-heart"></i>',
-  '<i class="fas fa-cannabis"></i>', '<i class="fas fa-cannabis"></i>',
-  '<i class="fas fa-paw"></i>', '<i class="fas fa-paw"></i>',
-  '<i class="fas fa-bone"></i>', '<i class="fas fa-bone"></i>'
-];
-
-// Shuffle the symbols
-shuffle(symbols);
-
-// Select the cards and place the shuffled symbols inside
-const cards = document.querySelectorAll('.card');
-for (let i = 0; i < 16; i++) {
-  cards[i].firstElementChild.innerHTML = symbols[i];
+function shuffleCards() {
+  shuffle(symbols);
+  for (let i = 0; i < 16; i++) {
+    cards[i].firstElementChild.innerHTML = symbols[i];
+  }
 }
 
+function resetGame() {
+  moves = 0;
+  matchedPairs = 0;
+  time = 0;
+  minutes = 0;
+  seconds = 0;
+  timerOn = false;
+  clickedCards = [];
+  clearInterval(timer);
 
-// Use a variable to count the number of moves.
-let moves = 0;
+  // make sure all cards are flipped over before shuffling the cards
+  for (let i = 0; i < 16; i++) {
+    cards[i].classList = 'card';
+  }
+  setTimeout(function() {
+    shuffleCards();
+  }, 500);
 
-// Use another variable to count the matched pairs.
-let matchedPairs = 0;
+  // Reset number of moves:
+  document.querySelector('.moveCounter').innerHTML = "0 moves";
 
-// Use a variable to record time (in seconds) since the first click.
-let time = 0;
-// Variables that store minutes and seconds
-let minutes = 0;
-let seconds = 0;
-// Record current timer state (on or off)
-let timerOn = false;
-// Variable that stores the setInterval()
-let timer;
+  // Reset timer display:
+  document.querySelector('.timer').innerHTML = "00:00";
 
-// Use an array to store the cards that are clicked.
-let clickedCards = [];
+  // Reset star rating:
+  document.querySelector('.starRating').innerHTML =
+    `<i class="fas fa-star"></i>
+  <i class="fas fa-star"></i>
+  <i class="fas fa-star"></i>`;
+}
+
+// Initialise the game once the page is loaded
+resetGame();
 
 // Add an Event Listener to each card so that when they're clicked, they flip over.
 // Need to come back to this later: event delegation & consider refactoring "toggling cards" into its own function
@@ -142,8 +178,14 @@ for (let i = 0; i < 16; i++) {
   });
 }
 
-// Timer: currently starts once the page is loaded
+// Adding an event listener to the reset button
+const resetButton = document.querySelector('.resetButton');
+resetButton.addEventListener('click', function() {
+  console.log('reset game!');
+  resetGame();
+});
 
+// Timer: currently starts once the page is loaded
 function startTimer() {
     timer = setInterval(function() {
     time++;
@@ -152,14 +194,3 @@ function startTimer() {
     document.querySelector('.timer').innerHTML = minutes + ":" + seconds;
   }, 1000);
 }
-
-
-// Reset Game
-const resetButton = document.querySelector('.resetButton');
-resetButton.addEventListener('click', function() {
-  clearInterval(timer);
-  time = 0;
-  let minutes = ("0" + Math.floor(time / 60)).slice(-2);
-  let seconds = ("0" + time % 60).slice(-2);
-  document.querySelector('.timer').innerHTML = minutes + ":" + seconds;
-});
