@@ -1,8 +1,6 @@
-/*
- *
- * Initialising global variables
- *
- */
+/* -----------------------------------------------------------------------------
+ Initialising global variables
+ ----------------------------------------------------------------------------- */
 
 // An array to store the innerHTML to put inside the front side of each card
 const symbols = [
@@ -34,6 +32,9 @@ let timer;
 // Use an array to store the cards that are clicked.
 let clickedCards = [];
 
+/* -----------------------------------------------------------------------------
+ Declaring functions
+ ----------------------------------------------------------------------------- */
 
 function shuffle(array) {
   var currentIndex = array.length,
@@ -79,13 +80,10 @@ function resetGame() {
   setTimeout(function() {
     shuffleCards();
   }, 500);
-
   // Reset number of moves:
   document.querySelector('.moveCounter').innerHTML = "0 moves";
-
   // Reset timer display:
   document.querySelector('.timer').innerHTML = "00:00";
-
   // Reset star rating:
   document.querySelector('.starRating').innerHTML =
     `<i class="fas fa-star"></i>
@@ -102,11 +100,15 @@ function startTimer() {
   }, 1000);
 }
 
+/* -----------------------------------------------------------------------------
+ Manipulating page content
+ ----------------------------------------------------------------------------- */
+
 // Initialise the game once the page is loaded
 resetGame();
 
 // Add an Event Listener to each card so that when they're clicked, they flip over.
-// Need to come back to this later: event delegation & consider refactoring "toggling cards" into its own function
+// TODO: event delegation & consider refactoring "toggling cards" into its own function
 for (let i = 0; i < 16; i++) {
   cards[i].addEventListener('click', function() {
 
