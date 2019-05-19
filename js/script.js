@@ -246,7 +246,6 @@ for (let i = 0; i < 16; i++) {
 // Add an event listener to the reset button
 const resetButton = document.querySelector('.resetButton');
 resetButton.addEventListener('click', function() {
-  console.log('reset game!');
   resetGame();
 });
 
