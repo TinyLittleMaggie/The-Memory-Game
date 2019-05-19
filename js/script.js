@@ -93,6 +93,15 @@ function resetGame() {
   <i class="fas fa-star"></i>`;
 }
 
+function startTimer() {
+    timer = setInterval(function() {
+    time++;
+    minutes = ("0" + Math.floor(time / 60)).slice(-2);
+    seconds = ("0" + time % 60).slice(-2);
+    document.querySelector('.timer').innerHTML = minutes + ":" + seconds;
+  }, 1000);
+}
+
 // Initialise the game once the page is loaded
 resetGame();
 
@@ -184,13 +193,3 @@ resetButton.addEventListener('click', function() {
   console.log('reset game!');
   resetGame();
 });
-
-// Timer: currently starts once the page is loaded
-function startTimer() {
-    timer = setInterval(function() {
-    time++;
-    minutes = ("0" + Math.floor(time / 60)).slice(-2);
-    seconds = ("0" + time % 60).slice(-2);
-    document.querySelector('.timer').innerHTML = minutes + ":" + seconds;
-  }, 1000);
-}
