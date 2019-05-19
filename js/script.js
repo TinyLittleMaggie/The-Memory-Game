@@ -101,7 +101,9 @@ function startTimer() {
 }
 
 function winningPopUp(moves, time) {
-  console.log("Yay! You won the game!" + " Moves = " + moves + ", time = " + time + " seconds");
+  let popUp = document.querySelector('.winningPopUp');
+  popUp.style.visibility = "visible";
+  popUp.innerHTML = "Yay! You won the game!" + " Moves = " + moves + ", time = " + time + " seconds";
 }
 
 /* -----------------------------------------------------------------------------
