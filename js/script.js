@@ -152,7 +152,7 @@ function winningPopUp(moves, time) {
   let popUp = document.querySelector('.winningPopUp');
   popUp.style.visibility = "visible";
   popUp.querySelector('.popUpComment').innerHTML = generateComment(moves);
-  popUp.querySelector('.popUpTime').innerHTML = "You've won the game in " + time + " seconds!";
+  popUp.querySelector('.popUpTime').innerHTML = "You won the game in " + time + " seconds!";
   popUp.querySelector('.popUpStars').innerHTML = starRate(moves);
 }
 
