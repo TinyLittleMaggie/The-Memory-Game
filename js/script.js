@@ -137,15 +137,13 @@ function starRate(moves) {
 }
 
 function generateComment(moves) {
-  let comment;
   if (moves < 32) {
-    comment = "Genius!";
+    return "Genius!";
   } else if (moves >= 32 && moves <= 38) {
-    comment = "Astounding!"
+    return "Astounding!"
   } else {
-    comment = "Well done!"
+    return "Well done!"
   }
-  return comment;
 }
 
 function winningPopUp(moves, time) {
